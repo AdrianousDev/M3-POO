@@ -13,7 +13,14 @@ datasource db {
 }
 
 model Produto {
-  id    Int     @id @default(autoincrement())
-  nome  String
-  preco Decimal @db.Decimal(10, 2)
+  id      Int      @id @default(autoincrement())
+  nome    String
+  preco   Decimal  @db.Decimal(10, 2)
+  estoque Estoque?
+}
+
+model Estoque {
+  produtoId  Int     @id
+  quantidade Int
+  produto    Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
 }

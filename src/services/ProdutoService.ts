@@ -12,8 +12,6 @@ export class ProdutoService {
   }
 
   async buscarPorId(id: number) {
-    if (!id || Number.isNaN(id)) throw new Error("ID inválido");
-
     const produto = await this.produtoRepository.buscarPorId(id);
 
     if (!produto) throw new Error("Produto não encontrado");
